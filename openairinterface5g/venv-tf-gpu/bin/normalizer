@@ -1,0 +1,6 @@
+#!/home/lab/바탕화면/Project_embedding/openairinterface5g/venv-tf-gpu/bin/python3
+import sys
+from charset_normalizer.cli import cli_detect
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(cli_detect())

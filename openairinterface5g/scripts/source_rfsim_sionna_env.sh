@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# OAI rfsimulator + Sionna flat-H 실험용 공통 환경 (source 로 불러 사용)
+# 사용: source scripts/source_rfsim_sionna_env.sh
+# 프로젝트 루트에서 실행하는 것을 전제로 한다.
+
+export OAI_SIONNA_RFSIM_APPLY="${OAI_SIONNA_RFSIM_APPLY:-1}"
+export OAI_SIONNA_CHANNEL_FAMILY="${OAI_SIONNA_CHANNEL_FAMILY:-RAYLEIGH_BLOCK}"
+export OAI_SIONNA_RX_ANT="${OAI_SIONNA_RX_ANT:-2}"
+export OAI_SIONNA_TX_ANT="${OAI_SIONNA_TX_ANT:-2}"
+export OAI_SIONNA_DIAG_ONLY="${OAI_SIONNA_DIAG_ONLY:-1}"
+export OAI_SIONNA_SCALE="${OAI_SIONNA_SCALE:-1.0}"
+export OAI_SIONNA_UPDATE_US="${OAI_SIONNA_UPDATE_US:-5000000}"
+export OAI_SIONNA_CARRIER_HZ="${OAI_SIONNA_CARRIER_HZ:-3619200000}"
+export OAI_SIONNA_SAMPLING_HZ="${OAI_SIONNA_SAMPLING_HZ:-61440000}"
+
+# TDL 예시를 쓸 때만 설정 (기본 RAYLEIGH_BLOCK 이면 무시됨)
+# export OAI_SIONNA_CHANNEL_FAMILY=TDL
+# export OAI_SIONNA_TDL_MODEL=A
+# export OAI_SIONNA_DELAY_SPREAD_S=100e-9
+# export OAI_SIONNA_MIN_SPEED_MPS=0
+# export OAI_SIONNA_MAX_SPEED_MPS=0
+
+if [[ -n "${OAI_RFSIM_BUILD_DIR}" ]]; then
+  export LD_LIBRARY_PATH="${OAI_RFSIM_BUILD_DIR}:${LD_LIBRARY_PATH}"
+fi
